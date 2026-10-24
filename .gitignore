@@ -1,0 +1,19 @@
+# Entorno Visual 
+.venv/
+env/
+venv/
+
+## Temporales de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Reportes de pruebas
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Configuración de editor
+.vscode/
+.idea/
+
