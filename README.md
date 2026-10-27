@@ -54,9 +54,14 @@ OrderReturned. Solo se registran después de una transición válida.
 | POST | /orders/{id}/confirm | 200, 404, 409, 422 |
 | POST | /orders/{id}/ship | 200, 404, 409, 422 |
 | POST | /orders/{id}/cancel | 200, 404, 409, 422 |
+| POST | /orders/{id}/deliver | 200, 404, 409, 422 |
+| POST | /orders/{id}/return  | 200, 404, 409, 422 |
 | POST | /reset | 200 |
 
 404 = no existe · 409 = estado no permite la operación · 422 = datos inválidos.
+
+`POST /orders/{id}/ship` recibe el body JSON `{"tracking_number": "..."}`.
+`POST /orders/{id}/cancel` recibe el body JSON `{"reason": "..."}`.
 
 ## Evidencias
 Capturas, bitácora E01–E15 y reflexión en `Reporte_Final_TechStore_U4_Eq16.docx`.
