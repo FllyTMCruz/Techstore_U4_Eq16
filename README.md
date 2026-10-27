@@ -63,5 +63,4 @@ OrderReturned. Solo se registran después de una transición válida.
 `POST /orders/{id}/ship` recibe el body JSON `{"tracking_number": "..."}`.
 `POST /orders/{id}/cancel` recibe el body JSON `{"reason": "..."}`.
 
-## Evidencias
-Capturas, bitácora E01–E15 y reflexión en `Reporte_Final_TechStore_U4_Eq16.docx`.
+
