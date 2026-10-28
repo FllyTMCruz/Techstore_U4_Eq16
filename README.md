@@ -60,6 +60,9 @@ OrderReturned. Solo se registran después de una transición válida.
 
 404 = no existe · 409 = estado no permite la operación · 422 = datos inválidos.
 
+Solo la confirmación de un pedido incluye el campo `message`:
+`"Pedido confirmado correctamente."`.
+
 `POST /orders/{id}/ship` recibe el body JSON `{"tracking_number": "..."}`.
 `POST /orders/{id}/cancel` recibe el body JSON `{"reason": "..."}`.
 

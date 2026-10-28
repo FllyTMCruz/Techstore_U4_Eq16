@@ -15,6 +15,7 @@ def test_get_order_200():
     response = client.get("/orders/O001")
     assert response.status_code == 200
     data = response.json()
+    assert "message" not in data
     assert data["id"] == "O001"
     assert data["status"] == "DRAFT"
     assert data["units"] == 4
@@ -29,6 +30,7 @@ def test_get_order_404():
 def test_confirm_order_200():
     response = client.post("/orders/O001/confirm")
     assert response.status_code == 200
+    assert response.json()["message"] == "Pedido confirmado correctamente."
     assert response.json()["status"] == "CONFIRMED"
 
 
@@ -50,6 +52,7 @@ def test_ship_order_200():
     client.post("/orders/O001/confirm")
     response = client.post("/orders/O001/ship", json={"tracking_number": "GUIA-TEST-01"})
     assert response.status_code == 200
+    assert "message" not in response.json()
     assert response.json()["status"] == "SHIPPED"
 
 

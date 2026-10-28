@@ -76,7 +76,11 @@ def confirm_order(order_id: str):
         raise HTTPException(status_code=409, detail=str(exc))
     except InvalidOrderData as exc:
         raise HTTPException(status_code=422, detail=str(exc))
-    return {"id": order.id, "status": order.status.value}
+    return {
+        "message": "Pedido confirmado correctamente.",
+        "id": order.id,
+        "status": order.status.value,
+    }
 
 
 @app.post("/orders/{order_id}/ship", tags=["Máquina de Estados"])
@@ -129,7 +133,10 @@ def deliver_order(order_id: str):
         raise HTTPException(status_code=409, detail=str(exc))
     except InvalidOrderData as exc:
         raise HTTPException(status_code=422, detail=str(exc))
-    return {"id": order.id, "status": order.status.value}
+    return {
+        "id": order.id,
+        "status": order.status.value,
+    }
 
 
 @app.post("/orders/{order_id}/return", tags=["Máquina de Estados"])
@@ -144,7 +151,10 @@ def return_order(order_id: str):
         raise HTTPException(status_code=409, detail=str(exc))
     except InvalidOrderData as exc:
         raise HTTPException(status_code=422, detail=str(exc))
-    return {"id": order.id, "status": order.status.value}
+    return {
+        "id": order.id,
+        "status": order.status.value,
+    }
 
 
 @app.post("/reset", tags=["Utilidades"])
@@ -152,4 +162,4 @@ def reset_fixtures():
     """Recarga los pedidos originales en memoria sin reiniciar el servidor."""
     global orders
     orders = load_fixture()
-    return {"message": "Fixtures recargados exitosamente", "total_orders": len(orders)}
+    return {"total_orders": len(orders)}
